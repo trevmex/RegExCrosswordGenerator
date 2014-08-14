@@ -34,6 +34,17 @@ public final class RegExCrosswordGenerator {
         this.rows = rows;
     }
 
+    /**
+     * Creates a new RexExCrosswordGenerator.
+     *
+     * @param solution the string containing the solution of the regex crossword.
+     * @param rows     the number of rows in the puzzle.
+     * @return a new instance of RexExCrosswordGenerator.
+     */
+    public static RegExCrosswordGenerator createNewInstance(String solution, int rows) {
+        return new RegExCrosswordGenerator(solution, rows);
+    }
+
     private void verifySolution(String solution) {
         if (solution == null) {
             throw new IllegalArgumentException("Solution cannot be null.");
@@ -48,15 +59,12 @@ public final class RegExCrosswordGenerator {
         }
     }
 
-    /**
-     * Creates a new RexExCrosswordGenerator.
-     *
-     * @param solution the string containing the solution of the regex crossword.
-     * @param rows the number of rows in the puzzle.
-     * @return a new instance of RexExCrosswordGenerator.
-     */
-    public static RegExCrosswordGenerator createNewInstance(String solution, int rows) {
-        return new RegExCrosswordGenerator(solution, rows);
+    public String getNthRow(int row) {
+        return null;
+    }
+
+    public String getNthColumn(int column) {
+        return null;
     }
 
     /**
