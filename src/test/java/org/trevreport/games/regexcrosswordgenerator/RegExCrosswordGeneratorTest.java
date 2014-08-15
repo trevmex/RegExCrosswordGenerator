@@ -42,9 +42,9 @@ public class RegExCrosswordGeneratorTest {
     // TODO: Make the more random
     @Test
     public void testFindNthRow_shouldReturnCorrectRow() throws Exception {
-        assertEquals(regExCrosswordGenerator.getNthRow(0), solution.substring(0, 2));
-        assertEquals(regExCrosswordGenerator.getNthRow(1), solution.substring(3, 5));
-        assertEquals(regExCrosswordGenerator.getNthRow(2), solution.substring(6, 8));
+        for (int i = 0; i < SOLUTION_LENGTH; i++) {
+            assertEquals(regExCrosswordGenerator.getNthRow(i), solution.substring(i, i + ROWS - 1));
+        }
     }
 
     @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Row number must be less then \\d+\\.")
@@ -60,9 +60,9 @@ public class RegExCrosswordGeneratorTest {
     // TODO: Make the more random
     @Test
     public void testFindNthColumn_shouldReturnCorrectColumn() throws Exception {
-        assertEquals(regExCrosswordGenerator.getNthColumn(0), String.valueOf(solution.charAt(0)) + solution.charAt(3) + solution.charAt(6));
-        assertEquals(regExCrosswordGenerator.getNthColumn(1), String.valueOf(solution.charAt(1)) + solution.charAt(4) + solution.charAt(7));
-        assertEquals(regExCrosswordGenerator.getNthColumn(2), String.valueOf(solution.charAt(2)) + solution.charAt(5) + solution.charAt(8));
+        for (int i = 0; i < SOLUTION_LENGTH; i++) {
+            assertEquals(regExCrosswordGenerator.getNthColumn(i), String.valueOf(solution.charAt(i)) + solution.charAt(i + ROWS) + solution.charAt(i + ROWS * 2));
+        }
     }
 
     @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Column number must be less then \\d+\\.")
