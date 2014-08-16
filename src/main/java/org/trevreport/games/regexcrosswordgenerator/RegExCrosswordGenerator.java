@@ -23,8 +23,11 @@ package org.trevreport.games.regexcrosswordgenerator;
  * @since 8/12/2014
  */
 public final class RegExCrosswordGenerator {
+    private final static int LOWER_BOUND = 0;
+
     private final String solution;
     private final int rows;
+    private final int columns;
 
     private RegExCrosswordGenerator(String solution, int rows) {
         verifySolution(solution);
@@ -32,6 +35,8 @@ public final class RegExCrosswordGenerator {
 
         verifyRows(rows);
         this.rows = rows;
+
+        this.columns = solution.length() / rows;
     }
 
     /**
@@ -43,6 +48,12 @@ public final class RegExCrosswordGenerator {
      */
     public static RegExCrosswordGenerator createNewInstance(String solution, int rows) {
         return new RegExCrosswordGenerator(solution, rows);
+    }
+
+    public String getNthRow(int row) {
+        verifyNthRow(row);
+
+        return null;
     }
 
     private void verifySolution(String solution) {
@@ -59,12 +70,27 @@ public final class RegExCrosswordGenerator {
         }
     }
 
-    public String getNthRow(int row) {
+    public String getNthColumn(int column) {
+        verifyNthColumn(column);
+
         return null;
     }
 
-    public String getNthColumn(int column) {
-        return null;
+    private void verifyNthRow(int row) {
+        verifyNth("Row", row, rows);
+    }
+
+    private void verifyNthColumn(int column) {
+        verifyNth("Column", column, columns);
+    }
+
+    private void verifyNth(String name, int number, int upperBound) {
+        if (number < LOWER_BOUND) {
+            throw new IndexOutOfBoundsException(name + " number must be positive.");
+        }
+        if (number >= upperBound) {
+            throw new IndexOutOfBoundsException(name + " number must be less than " + upperBound + ".");
+        }
     }
 
     /**

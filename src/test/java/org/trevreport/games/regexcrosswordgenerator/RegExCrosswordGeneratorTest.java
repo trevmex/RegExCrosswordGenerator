@@ -47,7 +47,7 @@ public class RegExCrosswordGeneratorTest {
         }
     }
 
-    @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Row number must be less then \\d+\\.")
+    @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Row number must be less than \\d+\\.")
     public void testFindNthRow_shouldNotAcceptRowsGreaterThanExist() throws Exception {
         regExCrosswordGenerator.getNthRow(ROWS);
     }
@@ -65,7 +65,7 @@ public class RegExCrosswordGeneratorTest {
         }
     }
 
-    @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Column number must be less then \\d+\\.")
+    @Test(expectedExceptions = IndexOutOfBoundsException.class, expectedExceptionsMessageRegExp = "Column number must be less than \\d+\\.")
     public void testFindNthColumn_shouldNotAcceptColumnsGreaterThanExist() throws Exception {
         regExCrosswordGenerator.getNthColumn(COLUMNS);
     }
