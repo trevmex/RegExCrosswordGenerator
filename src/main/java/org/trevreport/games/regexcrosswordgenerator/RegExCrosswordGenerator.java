@@ -53,7 +53,19 @@ public final class RegExCrosswordGenerator {
     public String getNthRow(int row) {
         verifyNthRow(row);
 
-        return null;
+        return solution.substring(row * rows, row * rows + rows);
+    }
+
+    public String getNthColumn(int column) {
+        verifyNthColumn(column);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < rows; i++) {
+            stringBuilder.append(solution.charAt(columns * i + column));
+        }
+
+        return stringBuilder.toString();
     }
 
     private void verifySolution(String solution) {
@@ -68,12 +80,6 @@ public final class RegExCrosswordGenerator {
         if (length % rows != 0) {
             throw new IllegalArgumentException("Number of rows must be divisible by " + length + ".");
         }
-    }
-
-    public String getNthColumn(int column) {
-        verifyNthColumn(column);
-
-        return null;
     }
 
     private void verifyNthRow(int row) {
